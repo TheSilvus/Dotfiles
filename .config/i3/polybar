@@ -59,8 +59,6 @@ modules-left = i3
 modules-center = 
 modules-right = 
 
-tray-position = right
-tray-padding = 2
 
 [bar/monitor2]
 inherit = bar/default
@@ -81,7 +79,8 @@ modules-left = i3
 modules-center = 
 modules-right = filesystem memory cpu wlan eth date
 
-
+tray-position = right
+tray-padding = 2
 
 
 
@@ -136,7 +135,7 @@ format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.default-underline}
 format-padding = ${values.default-padding}
-label = %percentage%%
+label = %percentage-sum%%
 
 
 [module/memory]
@@ -152,7 +151,7 @@ format-padding = ${values.default-padding}
 
 [module/wlan]
 type = internal/network
-interface = wlp10s0f3u1
+interface = wlp6s0
 interval = 5
 
 format-connected = <label-connected>

@@ -132,6 +132,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Media keys
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 
 # Gaps
 for_window [class="^.*"] border pixel 0
@@ -150,7 +155,13 @@ client.background	#3b4252
 # Locking
 bindsym $mod+l exec --no-startup-id "i3lock-fancy -b=0x16"
 
-# Startup Programs
+# Startup Basics
 exec_always --no-startup-id xrandr --output DVI-I-1 --auto --primary --output HDMI-0 --auto --right-of DVI-I-1 --output DVI-D-0 --auto --left-of DVI-I-1
 exec_always --no-startup-id xsetroot -solid "#222733"
 exec_always --no-startup-id sh ~/.config/i3/launch-polybar.sh
+
+
+# Startup autostart
+# exec_always --no-startup-id "i3-msg 'workspace 3; append_layout /home/silvus/.config/i3/layouts/workspace-3.json'"
+# exec_always --no-startup-id firefox
+# exec_always --no-startup-id /usr/bin/discord-ptb
