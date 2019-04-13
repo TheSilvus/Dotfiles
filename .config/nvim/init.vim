@@ -71,6 +71,7 @@ augroup END
 " Allow to change away from unsaved buffer
 set hidden
 " Buffer switching mappings
+nnoremap <BS> :b #<CR>
 nnoremap <C-q> :bp<CR>
 nnoremap <C-e> :bn<CR>
 
