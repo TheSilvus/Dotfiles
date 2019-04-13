@@ -22,11 +22,13 @@ if dein#load_state('/home/silvus/.config/nvim/dein')
 
   " Auto completion
   call dein#add('shougo/deoplete.nvim')
+  call dein#add('deoplete-plugins/deoplete-jedi')
   call dein#add('autozimu/LanguageClient-neovim', {'build': 'bash install.sh', 'rev': 'next'})
 
   " Utils
   call dein#add('shougo/denite.nvim')
   call dein#add('raghur/fruzzy')
+  call dein#add('mileszs/ack.vim')
 
   " Git
   call dein#add('tpope/vim-fugitive')
@@ -34,6 +36,8 @@ if dein#load_state('/home/silvus/.config/nvim/dein')
 
   " Language specific
   call dein#add('rust-lang/rust.vim')
+  call dein#add('alvan/vim-closetag')
+  call dein#add('lervag/vimtex')
 
 
   call dein#end()
@@ -52,8 +56,17 @@ endif
 
 
 " --- Vim configuration
+
 " Line numbers
-set number
+set number relativenumber
+set nu rnu
+
+"Automatically swich between line number types
+augroup numbertoggle
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
 
 " Allow to change away from unsaved buffer
 set hidden
@@ -80,6 +93,8 @@ set expandtab
 set textwidth=100
 set formatoptions-=t
 
+" Cursor distance from edge
+set scrolloff=10
 
 " --- Buftabline configuration
 let g:buftabline_numbers = 2
@@ -103,7 +118,7 @@ let g:LanguageClient_serverCommands = {
 
 " --- Denite configuration
 call denite#custom#var('file/rec', 'command',
-            \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--skip-vcs-ignores', '--ignore-dir', 'target', '--ignore-dir', '.git', '-g', ''])
+            \ ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--skip-vcs-ignores', '--ignore-dir', '__pycache__', '--ignore-dir', 'target', '--ignore-dir', '.git', '-g', ''])
 call denite#custom#source('_', 'matchers', ['matcher/fruzzy'])
 let g:fruzzy#usenative = 1
 
@@ -124,3 +139,8 @@ let g:lightline = {
             \   'gitbranch': 'fugitive#head',
             \ },
             \ }
+
+" --- Ack.vim configuration
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
