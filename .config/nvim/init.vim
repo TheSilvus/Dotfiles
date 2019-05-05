@@ -97,9 +97,18 @@ set formatoptions-=t
 " Cursor distance from edge
 set scrolloff=10
 
+" Highlight .html.tera template files (Rust) as .html
+au BufRead,BufNewFile *.html.tera set filetype=html
+" augroup tera_ft
+"     au!
+"     autocmd BufNewFile, BufRead *.html.tera set filetype=html
+" augroup END
+
+
 " --- Buftabline configuration
 let g:buftabline_numbers = 2
 let g:buftabline_indicators = 1
+
 
 " --- Vimwiki configuration
 
