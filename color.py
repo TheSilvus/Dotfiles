@@ -13,8 +13,8 @@ if scheme not in color_schemes:
 
 files = [
     "~/.config/i3/config",
-    # "~/.config/i3/polybar",
-    # "~/.config/i3/termite/config",
+    "~/.config/i3/polybar",
+    "~/.config/termite/config",
     # "~/.config/i3/rofi/config",
 ]
 
@@ -26,11 +26,15 @@ for filename in files:
     print(f"Combining {filename} from {basename} and {schemename}")
 
     with open(basename, "r") as f:
-        base = f.read()
+        base_content = f.read()
     with open(schemename, "r") as f:
-        scheme = f.read()
+        scheme_content = f.read()
 
-    complete = scheme + "\n" + base
+    complete_content = scheme_content + "\n" + base_content
 
     with open(filename, "w+") as f:
-        f.write(complete)
+        f.write(complete_content)
+
+with open(os.path.expanduser("~/.colorscheme"), "w+") as f:
+    f.write(scheme)
+

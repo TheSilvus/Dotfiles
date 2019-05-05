@@ -1,0 +1,6 @@
+set $c_bg #fdf6e3
+set $c_text #586e75
+set $c_foc #eee8d5
+set $c_foci #eee8d5
+set $c_unfo #fdf6e3
+set $c_urg #dc322f

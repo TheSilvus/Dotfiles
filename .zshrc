@@ -62,13 +62,29 @@ plugins=(
   git
 )
 
+# Load colorscheme variable
+if [[ -a "$HOME/.colorscheme" ]]; then
+    export COLORSCHEME=$(cat ~/.colorscheme)
+    if [[ $COLORSCHEME == "dark" ]]; then
+        ZSH_THEME=candy
+    else
+        ZSH_THEME=kphoen
+    fi
+else
+    echo "No colorscheme set!"
+    ZSH_THEME=candy
+fi
+
+
+# Initialize ZSH
 source $ZSH/oh-my-zsh.sh
 
 # User Configuration
 
 export EDITOR='nvim'
-
 export GOPATH="$HOME/programming/go"
-
 export PATH="$PATH:$HOME/.cargo/bin"
+
+
+# Load RVM
 source /home/silvus/.rvm/scripts/rvm

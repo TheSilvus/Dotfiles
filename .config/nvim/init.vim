@@ -82,8 +82,13 @@ nmap <C-s> :wincmd j<CR>
 nmap <C-d> :wincmd l<CR>
 
 " Colorscheme
-colorscheme nord
-let g:solarized_termcolors=256
+if empty($COLORSCHEME) || $COLORSCHEME == 'dark'
+    colorscheme nord
+else
+    colorscheme solarized
+    set background=light
+endif
+" let g:solarized_termcolors=256
 
 " Tab settings
 set tabstop=4

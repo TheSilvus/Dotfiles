@@ -1,0 +1,16 @@
+[colors]
+background = #fdf6e3
+background-alt = #fdf6e3
+
+foreground = #586e75
+foreground-alt = #93a1a1
+
+default-underline = #fdf6e3
+
+
+workspace-focused = #b58900
+workspace-urgent = #dc322f
+workspace-mode = #dc322f
+
+wifi-connected = #859900
+
