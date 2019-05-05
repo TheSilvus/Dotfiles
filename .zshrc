@@ -71,3 +71,4 @@ export EDITOR='nvim'
 export GOPATH="$HOME/programming/go"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+source /home/silvus/.rvm/scripts/rvm
